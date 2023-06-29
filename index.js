@@ -1,69 +1,52 @@
-function game() {
+const container = document.querySelector(".container");
+const gameOutput = document.createElement("div");
+gameOutput.classList.add("gameOutputContainer");
+gameOutput.style.backgroundColor = "yellow";
+gameOutput.textContent = "test";
+container.appendChild(gameOutput);
+
+//function game() {
     let round = 0;
     //loops for 5 rounds of rock, paper, scissors
-    for (i=0; round < 5; i++) {
-        let playerSelection = prompt("Choose between rock, paper or scissors");
+    //for (i=0; round < 5; i++) {
+        let playerSelection = "";
+        //document.addEventListener("click", playerSelection).textContent = "rock";
         let computerSelection = getComputerChoice();
     
         function getComputerChoice() {
             let randomResult = Math.floor(Math.random() * 3);
             if (randomResult == 0) {
-                return "Rock";
+                return "rock";
             } else if (randomResult == 1) {
-                return "Paper";
+                return "paper";
             } else {
-                return "Scissors";
+                return "scissors";
             }
         }
 
         function playRound(playerSelection, computerSelection) {
         switch (true) {
-                case (computerSelection === "Rock" && playerSelection === "paper"):
-                case (computerSelection === "Rock" && playerSelection === "Paper"):
-                case (computerSelection === "Rock" && playerSelection === "PAPER"):
+                case (computerSelection === "rock" && playerSelection === "paper"):
                     return "Player Wins! Paper beats Rock.";
-                case (computerSelection === "Rock" && playerSelection === "rock"):    
-                case (computerSelection === "Rock" && playerSelection === "Rock"):
-                case (computerSelection === "Rock" && playerSelection === "ROCK"):
-                    return "It's a draw. We both picked Rock.";
-                case (computerSelection === "Rock" && playerSelection === "scissors"):
-                case (computerSelection === "Rock" && playerSelection === "Scissors"):
-                case (computerSelection === "Rock" && playerSelection === "SCISSORS"):
+                case (computerSelection === "rock" && playerSelection === "scissors"):
                     return "Player loses. Rock beats Scissors.";
-
-                case (computerSelection === "Paper" && playerSelection === "paper"):
-                case (computerSelection === "Paper" && playerSelection === "Paper"):
-                case (computerSelection === "Paper" && playerSelection === "PAPER"):
-                    return "It's a draw. We both picked Paper.";
-                case (computerSelection === "Paper" && playerSelection === "rock"):
-                case (computerSelection === "Paper" && playerSelection === "Rock"):
-                case (computerSelection === "Paper" && playerSelection === "ROCK"):
+                case (computerSelection === "paper" && playerSelection === "rock"):
                     return "Player loses. Paper beats Rock.";
-                case (computerSelection === "Paper" && playerSelection === "scissors"):
-                case (computerSelection === "Paper" && playerSelection === "Scissors"):
-                case (computerSelection === "Paper" && playerSelection === "SCISSORS"):
+                case (computerSelection === "paper" && playerSelection === "scissors"):
                     return "Player wins! Scissors beats Paper.";
-                    
-                case (computerSelection == "Scissors" && playerSelection === "paper"):
-                case (computerSelection == "Scissors" && playerSelection === "Paper"):
-                case (computerSelection == "Scissors" && playerSelection === "PAPER"):
+                case (computerSelection == "scissors" && playerSelection === "paper"):
                     return "Player loses. Scissors beats Paper.";
-                case (computerSelection == "Scissors" && playerSelection === "rock"):
-                case (computerSelection == "Scissors" && playerSelection === "Rock"):
-                case (computerSelection == "Scissors" && playerSelection === "ROCK"):
+                case (computerSelection == "scissors" && playerSelection === "rock"):
                     return "Player wins! Rock beats Scissors.";
-                case (computerSelection == "Scissors" && playerSelection === "scissors"):
-                case (computerSelection == "Scissors" && playerSelection === "Scissors"):
-                case (computerSelection == "Scissors" && playerSelection === "SCISSORS"):
-                    return "It's a draw. We both picked Scissors.";    
-                default:
-                    return "You didn't enter a valid choice.";
+                case (computerSelection === playerSelection):
+                    return "It's a tie.";
             }    
         }
+
     round ++;
     console.log("Round " + round + ":");
     console.log("Player = " + playerSelection);
     console.log("Computer = " + computerSelection);
     console.log(playRound(playerSelection,computerSelection));
-    }
-}
+    //}
+//}
