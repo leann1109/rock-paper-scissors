@@ -1,14 +1,35 @@
-const container = document.querySelector(".container");
-const gameOutput = document.createElement("div");
-gameOutput.classList.add("gameOutputContainer");
-gameOutput.style.backgroundColor = "yellow";
-gameOutput.textContent = "test";
-container.appendChild(gameOutput);
-
 //function game() {
-    let round = 0;
+    let currentRound = 0;
+    let computerScoreCounter = 0;
+    let playerScoreCounter = 0;
+
+    const container = document.querySelector(".container");
+    const gameOutput = document.createElement("div");
+    gameOutput.classList.add("gameOutputContainer");
+    container.appendChild(gameOutput);
+
+    //rounds
+    const rounds = document.createElement("div");
+    rounds.classList.add("rounds")
+    rounds.textContent = "Round: " +  currentRound;
+    gameOutput.appendChild(rounds);
+
+    const scoreContainer = document.createElement("div");
+    scoreContainer.classList.add("scoreContainer");
+    gameOutput.appendChild(scoreContainer)
+
+    //computer score
+    const computerScore = document.createElement("div");
+    computerScore.textContent = "Computer: " + computerScoreCounter;
+    scoreContainer.appendChild(computerScore);
+
+    //player score
+    const playerScore = document.createElement("div");
+    playerScore.textContent = "Player: " + playerScoreCounter;
+    scoreContainer.appendChild(playerScore);
+
     //loops for 5 rounds of rock, paper, scissors
-    //for (i=0; round < 5; i++) {
+    for (i=0; currentRound < 5; i++) {
         let playerSelection = "";
         //document.addEventListener("click", playerSelection).textContent = "rock";
         let computerSelection = getComputerChoice();
@@ -43,10 +64,9 @@ container.appendChild(gameOutput);
             }    
         }
 
-    round ++;
-    console.log("Round " + round + ":");
+    currentRound ++;
     console.log("Player = " + playerSelection);
     console.log("Computer = " + computerSelection);
     console.log(playRound(playerSelection,computerSelection));
-    //}
+    }
 //}
